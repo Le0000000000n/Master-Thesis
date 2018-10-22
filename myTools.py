@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from six.moves import cPickle
-import python_speech_features as features
+#import python_speech_features as features
 from scipy.spatial import distance
 import scipy.io.wavfile as wav
 import datetime
