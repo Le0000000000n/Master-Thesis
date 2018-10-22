@@ -15,6 +15,7 @@ import keras
 from keras.models import Sequential, load_model
 from keras.applications.vgg16 import VGG16
 from IPython.display import clear_output
+from tqdm import *
 
 
 
@@ -409,13 +410,12 @@ def getFeats(X_train):
     model = VGG16(include_top=False, input_shape=(55,65,3))
     feats = []
     num = 0
-    for i in X_train:
-        clear_output()
-        print(num)
-        a = resize(i[:,:13], 5)
+    tr = np.arange(len(X_train))
+    for i in tqdm(tr):
+        a = resize(X_train[i][:,:13], 5)
         b = model.predict(a[np.newaxis,:,:,:])
         feats.append(b[0,0,:,:])
-        num += 1
+#        clear_output()
         
     feats = np.array(feats)
     return feats
