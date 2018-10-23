@@ -233,10 +233,16 @@ def runPreprocess(pfile, tfile):
 
 def pltDistanceDistribution(a, distFunction = distance.euclidean , bins = 50, flatten = True,  **kargs):
 
-    start = datetime.datetime.now()
-    distFunction(a[0], a[1])
-    end = datetime.datetime.now()
-    t = end - start
+    if(not flatten):
+        start = datetime.datetime.now()
+        distFunction(a[0], a[1])
+        end = datetime.datetime.now()
+        t = end - start
+    else:
+        start = datetime.datetime.now()
+        distFunction(a[0].flatten(), a[1].flatten())
+        end = datetime.datetime.now()
+        t = end - start
     num_iters = int(100 / t.total_seconds())
     
     x = []
