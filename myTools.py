@@ -344,7 +344,7 @@ def accByCategories(model, xtest = None, ytest = None , info_test = None, prePro
     
     return acc
         
-def accByPhonems(model, x = None, y = None, preProcessedFile = None):
+def accByPhonemes(model, x = None, y = None, preProcessedFile = None):
     if(preProcessedFile):
         print('Loading preprocessed test data from file ...')
         with open(preProcessedFile, 'rb') as cPickle_file:
