@@ -435,26 +435,26 @@ def myDist(a, b):
 
 ###########################################
 
-x,y,_,_,_,_ = load_dataset('../Master-Thesis-stuff/std_preprocess_26_ch.pkl')
-print(myDist(x[8][25], x[80][24]))
-print(myDist(x[0][100], x[2][14]))
-x = np.concatenate(ctx(x))
-y = np.concatenate(y)
-print(x.shape)
-x = x[:,:6,:]
-print(x.shape)
-print('done concatenate')
-# pltDistanceDistribution(x, distFunction =  myDist, bins = 50, flatten = False)
-n = 0
-for i in range(10000):
-	p = random.randint(0, len(x)-1)
-	q = random.randint(0, len(x)-1)
-	d = myDist(x[p], x[q])
-	if d < 6:
-		# print(d, y[p], y[q])
-		if y[p] == y[q]:
-			n += 1
-print(n)
+# x,y,_,_,_,_ = load_dataset('../Master-Thesis-stuff/std_preprocess_26_ch.pkl')
+# print(myDist(x[8][25], x[80][24]))
+# print(myDist(x[0][100], x[2][14]))
+# x = np.concatenate(ctx(x))
+# y = np.concatenate(y)
+# print(x.shape)
+# x = x[:,:6,:]
+# print(x.shape)
+# print('done concatenate')
+# # pltDistanceDistribution(x, distFunction =  myDist, bins = 50, flatten = False)
+# n = 0
+# for i in range(10000):
+# 	p = random.randint(0, len(x)-1)
+# 	q = random.randint(0, len(x)-1)
+# 	d = myDist(x[p], x[q])
+# 	if d < 6:
+# 		# print(d, y[p], y[q])
+# 		if y[p] == y[q]:
+# 			n += 1
+# print(n)
 
 
 
