@@ -75,10 +75,13 @@ def create_mfcc(method, filename):
     preemph=0.97, appendEnergy=True)
 
     derivative = np.zeros(mfcc.shape)
+    derivative2 = np.zeros(mfcc.shape)
     for i in range(1, mfcc.shape[0]-1):
         derivative[i, :] = mfcc[i+1, :] - mfcc[i-1, :]
+    for i in range(2, mfcc.shape[0]-2):
+        derivative2[i, :] = derivative[i+1, :] - derivative[i-1, :]
 
-    out = np.concatenate((mfcc, derivative), axis=1)
+    out = np.concatenate((mfcc, derivative, derivative2), axis=1)
 
     return out, out.shape[0]
 
