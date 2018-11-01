@@ -234,6 +234,8 @@ def runPreprocess(pfile, tfile):
     print('All done!')
     print()
 
+    return X_train, y_train, info_train, X_test, y_test, info_test
+
 def pltDistanceDistribution(a, distFunction = distance.euclidean , bins = 50, flatten = True,  **kargs):
 
     if(not flatten):
