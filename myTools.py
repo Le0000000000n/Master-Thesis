@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from six.moves import cPickle
-#import python_speech_features as features
+# import python_speech_features as features
 from scipy.spatial import distance
 import scipy.io.wavfile as wav
 import datetime
@@ -15,6 +15,7 @@ import keras
 from keras.models import Sequential, load_model
 from keras.applications.vgg16 import VGG16
 from IPython.display import clear_output
+from sklearn.decomposition import PCA
 from tqdm import *
 
 
