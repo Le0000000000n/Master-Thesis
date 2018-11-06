@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from six.moves import cPickle
+import time
 # import python_speech_features as features
 from scipy.spatial import distance
 import scipy.io.wavfile as wav
@@ -17,6 +18,7 @@ from keras.applications.vgg16 import VGG16
 from IPython.display import clear_output
 from sklearn.decomposition import PCA
 from tqdm import *
+from fastdtw import fastdtw as dtw
 
 
 
@@ -432,12 +434,36 @@ def getFeats(X_train):
     feats = np.array(feats)
     return feats
 
-def myDist(a, b):
-	assert len(a) == len(b)
-	d = 0
-	for i in range(len(a)):
-		d += ((1/2)**d)*distance.euclidean(a[i], b[i])
-	return d
+# def myDist(a, b):
+# 	assert len(a) == len(b)
+# 	d = 0
+# 	for i in range(len(a)):
+# 		d += ((1/2)**d)*distance.euclidean(a[i], b[i])
+# 	return d
+
+def md4dtw(a,b):
+    return distance.minkowski(a, b, 10)
+
+def dtwGenerator(batch_size, sample_distance):
+    sample_size = len(X_train)
+    
+    while 1:
+        idx = []
+        idx.append(random.randint(0,sample_size-1))
+
+        while 1:
+            if len(idx) == batch_size: break
+            temp = random.randint(0,sample_size-1)
+            flag = 0
+            for j in idx:
+                d, _ = dtw(X_train[j], X_train[temp], dist = md4dtw)
+                if d < sample_distance:
+                    flag = 1
+                    break
+            if flag==0:
+                idx.append(temp)
+        
+        yield idx
 
 ###########################################
 
