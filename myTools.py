@@ -445,7 +445,7 @@ def getFeats(X_train):
 def md4dtw(a,b):
     return distance.minkowski(a, b, 10)
 
-def dtwGenerator(batch_size, sample_distance):
+def dtwGenerator(X_train, batch_size, sample_distance):
     sample_size = len(X_train)
     
     while 1:
