@@ -19,6 +19,7 @@ from IPython.display import clear_output
 from sklearn.decomposition import PCA
 from tqdm import *
 from fastdtw import fastdtw as dtw
+import csv
 
 
 
