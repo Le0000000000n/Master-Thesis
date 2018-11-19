@@ -263,6 +263,8 @@ def pltDistanceDistribution(a, distFunction = distance.euclidean , bins = 50, fl
         for i in range(num_iters):
             x.append(distFunction(a[random.randint(0,len(a)-1)], a[random.randint(0,len(a)-1)]))
     plt.hist(x, bins = 50)
+    plt.xlabel('Pair Distance')
+    plt.yticks([])
     plt.show()
 
 def dec2onehot(dec, output_dim = 61):
